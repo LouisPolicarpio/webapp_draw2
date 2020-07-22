@@ -1,0 +1,28 @@
+{% extends 'app_webapp_draw/base.html' %}
+{%load static%}
+{% block content %}
+<link rel="stylesheet" type="text/css" href= "{% static 'css/display_image.css' %}">
+
+<div class = "row">
+  {% for image in imgs%}
+  <div class = "col-sm-4">
+      <div class="card mb-3">
+        <img class="card-img-top" src ="/static/{{image.image}}"
+
+          <div class="card-body">
+            <h5 class = card-title>{{image.title}}</h5>
+            <p class = "card-text">{{image.desc}}</p>
+
+            <div class = "card-footer">
+              <small class ="text-muted">{{image.up_date}}</small>
+            </div>
+
+          </div>
+
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

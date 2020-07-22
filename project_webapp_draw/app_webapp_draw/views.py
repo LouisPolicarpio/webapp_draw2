@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def home(request):
     return render(request,'app_webapp_draw/index.html')
 
@@ -33,7 +33,7 @@ def logoutUser(request):
     return redirect('login')
 
 def register(request):
-    if request.user.isauthenticated:
+    if request.user.is_authenticated:
         return redirect('home')
     else:
         form = CreatUserForm()
@@ -47,3 +47,10 @@ def register(request):
                 return redirect(loginPage)
         context = {'form' : form}
         return render(request,'app_webapp_draw/register.html', context)
+
+
+login_required(login_url='login')
+def myimages(request):
+    imgs = User_images.objects.filter(user=request.user)
+    context={"imgs":imgs}
+    return render (request, 'app_webapp_draw/myimages.html',  context)

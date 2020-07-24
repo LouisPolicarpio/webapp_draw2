@@ -20,3 +20,7 @@ class CreatUserForm(UserCreationForm):
             user.save()
 
         return user
+
+class WordPromptForm(forms.Form):
+    adj_amount = forms.IntegerField()
+    verb_amount = forms.IntegerField()

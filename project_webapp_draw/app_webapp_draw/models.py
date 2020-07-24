@@ -13,3 +13,21 @@ class  User_images(models.Model):
 
     def __str__(self):
         return self.title
+
+class Adjective(models.Model):
+    word = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.word
+
+class Verb(models.Model):
+    word = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.word
+
+class Adverb(models.Model):
+    word = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.word

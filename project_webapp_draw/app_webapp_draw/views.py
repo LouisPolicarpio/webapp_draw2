@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 # Create your views here.
 
 from .models import *
@@ -47,6 +48,14 @@ def register(request):
                 return redirect(loginPage)
         context = {'form' : form}
         return render(request,'app_webapp_draw/register.html', context)
+
+class word_prompt(TemplateView):
+    template_name = 'app_webapp_draw/word_prompt'
+
+    def get(self,request):
+        form = WordPromptForm()
+        return render(request, self.template_name, {'form':form})
+
 
 
 login_required(login_url='login')

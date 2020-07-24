@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app_webapp_draw',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

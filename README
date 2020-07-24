@@ -1,1 +1,4 @@
-need django 2.2.5 installed in venv 
+installed:
+  django 2.2.5 installed,
+  Pillow,
+in venv

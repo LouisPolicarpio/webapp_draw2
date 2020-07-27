@@ -1,3 +1,5 @@
+webapp that allows users to upload art and generate prompts via images and words. 
+
 installed:
   django 2.2.5 installed,
   Pillow,

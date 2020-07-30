@@ -1,0 +1,20 @@
+{% extends 'app_webapp_draw/base.html' %}
+{%load static%}
+{% block content %}
+{% load image_wrapper %}
+<div class="jumbotron">
+  <h4>Image Prompt</h4>
+  {%pix_image q="person" class="prompt"%}
+  <a href="https://pixabay.com/">from pixabay</a>
+
+</div>
+
+
+<style>
+  .prompt
+  {
+      max-width:100%;
+      max-height:100%;
+  }
+</style>
+{% endblock %}

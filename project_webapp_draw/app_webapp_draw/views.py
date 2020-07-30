@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+
+
 # Create your views here.
 
 from .models import *
@@ -63,7 +65,8 @@ def word_prompt(request):
     form = WordPromptForm()
     return render(request, 'app_webapp_draw/word_prompt.html',{'form':form})
 
-
+def img_prompt(request):
+    return render(request,'app_webapp_draw/img_prompt.html')
 
 login_required(login_url='login')
 def myimages(request):

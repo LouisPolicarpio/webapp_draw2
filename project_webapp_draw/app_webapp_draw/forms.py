@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 
+
 from .models import *
 
 class CreatUserForm(UserCreationForm):
@@ -23,4 +24,5 @@ class CreatUserForm(UserCreationForm):
 
 class WordPromptForm(forms.Form):
     adj_amount = forms.IntegerField()
+
     verb_amount = forms.IntegerField()

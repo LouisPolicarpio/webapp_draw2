@@ -49,12 +49,19 @@ def register(request):
         context = {'form' : form}
         return render(request,'app_webapp_draw/register.html', context)
 
-class word_prompt(TemplateView):
-    template_name = 'app_webapp_draw/word_prompt'
+def word_prompt(request):
 
-    def get(self,request):
-        form = WordPromptForm()
-        return render(request, self.template_name, {'form':form})
+    if request.method == 'POST':
+        form = WordPromptForm(request.POST)
+        if form.is_valid():
+            req_adj = Adjective.objects.order_by('?')[:form.cleaned_data['adj_amount']]
+            req_verb = Verb.objects.order_by('?')[:form.cleaned_data['verb_amount']]
+
+            context ={'form':form, 'req_adj':req_adj, 'req_verb':req_verb}
+            return render(request, 'app_webapp_draw/word_prompt.html',context)
+
+    form = WordPromptForm()
+    return render(request, 'app_webapp_draw/word_prompt.html',{'form':form})
 
 
 

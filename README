@@ -1,6 +1,8 @@
-webapp that allows users to upload art and generate prompts via images and words. 
+webapp that allows users to upload art and generate prompts via images and words.
 
 installed:
   django 2.2.5 installed,
   Pillow,
+  django-picsum (django wrapper fpr pixabay api)
+  python-decouple (protect api key through .env file)
 in venv

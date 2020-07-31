@@ -24,5 +24,9 @@ class CreatUserForm(UserCreationForm):
 
 class WordPromptForm(forms.Form):
     adj_amount = forms.IntegerField()
-
     verb_amount = forms.IntegerField()
+
+class UploadForm(ModelForm):
+    class Meta:
+        model = User_images
+        fields=['title','desc','image']

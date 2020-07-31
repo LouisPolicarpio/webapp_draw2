@@ -68,6 +68,21 @@ def word_prompt(request):
 def img_prompt(request):
     return render(request,'app_webapp_draw/img_prompt.html')
 
+def upload_img(request):
+    if request.method == 'POST':
+        form = UploadForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user=request.user
+            post.save()
+
+            title = form.cleaned_data('title')
+            context ={'form':form, 'title':title}
+            return render(request, 'app_webapp_draw/word_prompt.html',context)
+
+    form = UploadForm()
+    return render(request, 'app_webapp_draw/upload_img.html', {'form':form})
+
 login_required(login_url='login')
 def myimages(request):
     imgs = User_images.objects.filter(user=request.user)

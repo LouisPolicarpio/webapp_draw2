@@ -6,3 +6,6 @@ installed:
   django-picsum (django wrapper fpr pixabay api)
   python-decouple (protect api key through .env file)
 in venv
+
+User uploaded images are stored localy in the static files. In the full implementation this should not 
+will the case. Images should be stored in another server such as Asure Blob

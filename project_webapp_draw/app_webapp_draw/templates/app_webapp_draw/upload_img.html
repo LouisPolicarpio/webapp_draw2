@@ -3,17 +3,13 @@
 {% block content %}
 <div class="jumbotron">
 
-  <form method="post">
+  <form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <button type="submit" class="btn btn-secondary">Submit</button>
+    <button type="submit"  class="btn btn-secondary">Submit</button>
   </form>
-
   <br>
-  {% if title %}
-    {{title}}
-    <p1> has been uploaded</p1>
-  {% endif %}
-
+  {{title}}
+  
 </div>
 {% endblock %}

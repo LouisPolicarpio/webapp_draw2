@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
 
+
 # Create your views here.
 
 from .models import *
@@ -68,20 +69,21 @@ def word_prompt(request):
 def img_prompt(request):
     return render(request,'app_webapp_draw/img_prompt.html')
 
+
+@login_required(login_url='login')
 def upload_img(request):
+    user = request.user
     if request.method == 'POST':
-        form = UploadForm(request.POST)
+        form = UploadForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.user=request.user
-            post.save()
+            form.save()
+            return redirect('myimages')
+    else:
+        form = UploadForm(instance=user)
 
-            title = form.cleaned_data('title')
-            context ={'form':form, 'title':title}
-            return render(request, 'app_webapp_draw/word_prompt.html',context)
+    context ={'form':form}
+    return render(request, 'app_webapp_draw/word_prompt.html', context)
 
-    form = UploadForm()
-    return render(request, 'app_webapp_draw/upload_img.html', {'form':form})
 
 login_required(login_url='login')
 def myimages(request):

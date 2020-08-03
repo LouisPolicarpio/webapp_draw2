@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
@@ -26,7 +26,7 @@ class WordPromptForm(forms.Form):
     adj_amount = forms.IntegerField()
     verb_amount = forms.IntegerField()
 
-class UploadForm(ModelForm):
+class UploadForm(forms.ModelForm):
     class Meta:
         model = User_images
         fields=['title','desc','image']

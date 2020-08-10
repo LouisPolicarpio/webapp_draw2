@@ -1,4 +1,3 @@
-
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
@@ -10,7 +9,7 @@ class CreatUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2',]
 
     #clean data
     def save(self, commit=True):
@@ -29,4 +28,4 @@ class WordPromptForm(forms.Form):
 class UploadForm(forms.ModelForm):
     class Meta:
         model = User_images
-        fields=['title','desc','image']
+        fields=['image',]

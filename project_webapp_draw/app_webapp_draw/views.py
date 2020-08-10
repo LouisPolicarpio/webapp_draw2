@@ -72,14 +72,12 @@ def img_prompt(request):
 
 @login_required(login_url='login')
 def upload_img(request):
-    user = request.user
-    if request.method == 'POST':
-        form = UploadForm(request.POST, request.FILES, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('myimages')
-    else:
-        form = UploadForm(instance=user)
+    form = UploadForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "successfully uploaded")
+        return redirect('myimages')
 
     context ={'form':form}
     return render(request, 'app_webapp_draw/word_prompt.html', context)

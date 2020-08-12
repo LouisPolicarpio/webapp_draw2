@@ -28,4 +28,4 @@ class WordPromptForm(forms.Form):
 class UploadForm(forms.ModelForm):
     class Meta:
         model = User_images
-        fields=['image',]
+        fields=['title','desc','image',]

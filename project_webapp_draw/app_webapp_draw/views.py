@@ -74,6 +74,7 @@ def img_prompt(request):
 def upload_img(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
+        
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = request.user
@@ -87,6 +88,6 @@ def upload_img(request):
 
 login_required(login_url='login')
 def myimages(request):
-    imgs = User_images.objects.filter(user=request.user).order_by('date')
+    imgs = User_images.objects.filter(user=request.user).order_by('-date')
     context={"imgs":imgs}
     return render (request, 'app_webapp_draw/myimages.html',  context)

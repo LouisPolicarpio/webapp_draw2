@@ -3,3 +3,7 @@ card-img-top {
     height: 15vw;
     object-fit: cover;
 }
+
+.col-sm-11{
+  margin: 0 auto;
+}
